@@ -17,6 +17,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_BSA2-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=EL-BID_BSA2-Tool)
 -->
 
+**Español** | [English](README-EN.md)
+
 ---
 
 ## Tabla de contenidos
@@ -24,6 +26,8 @@
 - [Descripción y contexto](#descripción-y-contexto)
 - [Guía de usuario](#guía-de-usuario)
 - [Guía de instalación](#guía-de-instalación)
+- [Archivos de entrada y de salida](#archivos-de-entrada-y-de-salida)
+- [Descripción del motor de cálculo](#descripción-del-motor-de-cálculo)
 - [Estructura del repositorio](#estructura-del-repositorio)
 - [Documentación completa](#documentación-completa)
 - [Cómo contribuir](#cómo-contribuir)
@@ -140,9 +144,15 @@ import arcpy, numpy
 print(arcpy.__version__, numpy.__version__)
 ```
 
+## Variables de entorno
+
+La herramienta **no requiere variables de entorno** ni archivos de configuración adicionales. Todos los insumos se ingresan en el diálogo de parámetros del toolbox.
+
 ## Caso de referencia (Costa Rica)
 
-Para validar la instalación, descomprima `ejemplos/costa-rica/BSA2_CostaRica.zip`. El paquete contiene el proyecto `CostaRica.aprx`, la geodatabase `BSA2.gdb` con los insumos y resultados, el toolbox y el script. Abra el proyecto en ArcGIS Pro y ejecute la herramienta con los parámetros que registra `ejemplos/costa-rica/Loc/run_config_20260413_172736.loc`.
+`ejemplos/costa-rica/BSA2_CostaRica.zip` contiene la carpeta de trabajo del caso: el proyecto `CostaRica.aprx`, la geodatabase `BSA2.gdb` con las capas de exposición (red vial, puentes, túneles y drenajes), el toolbox y el script. También incluye las bases `FVU_BSA_V3.csv` y `OCO_BSA_CR_V1.csv`, que además están sueltas en la misma carpeta. Los parámetros de la corrida de referencia están en `ejemplos/costa-rica/Loc/run_config_20260413_172736.loc`.
+
+> ⚠️ **Los rásters de amenaza del caso no están incluidos.** Faltan las inundaciones fluvial y costera y el sismo (`ri_h_CR_*.tif`, `c_h_CR_*.tif` y `EQ_CR_PGA_*.tif`). Además, `CostaRica.aprx` conserva referencias a carpetas locales de los autores. Para reproducir la corrida hay que obtener esos rásters del equipo del proyecto y volver a vincular las capas en ArcGIS Pro.
 
 ## Construir el sitio de documentación
 
@@ -159,6 +169,64 @@ También puede usar el entorno de desarrollo de `.devcontainer/` (VS Code o GitH
 ## Pruebas
 
 El motor depende de `arcpy`, por lo que no tiene pruebas unitarias automatizadas. Se valida con el caso de referencia de Costa Rica. El workflow `docs.yml` comprueba en cada *push* que el sitio de documentación se construya sin errores.
+
+---
+
+# Archivos de entrada y de salida
+
+## Archivos de entrada
+
+| Insumo (parámetro) | Formato | Contenido |
+| --- | --- | --- |
+| Red vial (`roads_path`, 0) | Capa de polilíneas | `ID_TRAMO`, `vul_f` (taxonomía de inundación), `vul_eq` (taxonomía sísmica), `rep_cost_k` (miles de USD por metro), `Longitud` (m), TPDA por tipo de vehículo `T9`–`T15` |
+| Puentes, túneles y drenajes (1–3) | Capas de puntos | `ID_TRAMO` (tramo al que pertenecen), `vul_f`, `vul_eq`, `rep_cost` (USD) |
+| Amenazas (4–7) | Varios GeoTIFF por amenaza, uno por periodo de retorno | Tirante (m) para inundación, altura de ola (m) para tsunami y PGA para sismo. El periodo de retorno se toma del **último número del nombre del archivo** (`ri_h_CR_100.tif` → Tr = 100) |
+| Licuefacción (8) | Un GeoTIFF | Susceptibilidad en escala 1–4. Modifica la función de vulnerabilidad sísmica |
+| Cambio climático (9) | Capa de polígonos | Campos `TP###S#M` con los periodos de retorno modificados por escenario |
+| Vulnerabilidad (10) | CSV, una fila por curva: `taxonomy,[intensidades],[valores]` | Ejemplo: `FL_RMD_H_TRNP,[0,0.2,0.5,1.5,50],[0,1,2,20,20]`. Ver `ejemplos/costa-rica/FVU_BSA_V3.csv` (60 curvas) |
+| Costos de operación (11) | CSV `taxonomy,COV,OCU` | Costo de operación vehicular (USD/km) y ocupación promedio para `T9`–`T15`. Ver `ejemplos/costa-rica/OCO_BSA_CR_V1.csv` |
+| PIB per cápita por día (12) | Número | Valor del tiempo de las personas usuarias durante la interrupción |
+| Longitud de segmento (13) | Número (m) | Distancia entre los puntos de muestreo sobre la red, por ejemplo 30 m |
+
+La ficha completa de datos obligatorios y opcionales (22 hojas) está en `referencias/03_datos_entrada/`.
+
+## Archivos de salida (en `BSA2.gdb`, junto a `BSA2.py`)
+
+| Salida | Contenido |
+| --- | --- |
+| `roads_results_<AAAAMMDD_HHMMSS>` | Red vial con los resultados por tramo, incluido el DAE de sus componentes |
+| `bridges_results_<…>`, `tunnels_results_<…>`, `drainage_results_<…>` | Resultados por componente (solo si se ingresó la capa) |
+| `Loc/run_config_<AAAAMMDD_HHMMSS>.loc` | Registro de los parámetros usados en la corrida |
+
+Campos principales de las capas de resultados:
+
+| Campo | Descripción |
+| --- | --- |
+| `damage_{amenaza}_{Tr}` y `loss_{amenaza}_{Tr}` | Daño físico y pérdida funcional (USD) por amenaza y periodo de retorno |
+| `DAE_{amenaza}`, `DAE` / `DAE_total` | Daño Anual Esperado por amenaza y total (en la red vial, `DAE_total` suma los componentes) |
+| `PAE_{amenaza}`, `PAE_total` | Pérdida Anual Esperada por interrupción, por amenaza y total |
+| `Priority` | Índice de priorización: `DAE_total + PAE_total` |
+| `*_mod_{escenario}`, `Priority_mod_{escenario}` | Resultados bajo cada escenario de cambio climático (solo con el parámetro 9) |
+
+Los resultados se añaden automáticamente al mapa activo de ArcGIS Pro.
+
+---
+
+# Descripción del motor de cálculo
+
+`toolbox/BSA2.py` contiene un solo script con la función `main()` y funciones auxiliares agrupadas por etapa:
+
+| Etapa | Funciones | Qué hacen |
+| --- | --- | --- |
+| Utilidades | `ensure_field`, `find_field`, `parse_TR_from_name`, `get_endpoints`, `create_consolidated_copy` | Gestión de campos y capas, lectura del Tr desde el nombre del ráster, copia de las capas a `BSA2.gdb` |
+| Amenaza | `sample_raster_to_points`, `add_raster_field`, `liquefaction_once` | Muestreo de los rásters de amenaza y de licuefacción sobre la red y sus componentes |
+| Exposición | `road_geometry` | Genera puntos de muestreo cada `road_segme` metros y su longitud tributaria |
+| Vulnerabilidad y daño | `read_vul_db`, `build_vul_key`, `process_roads`, `process_component`, `create_damage_fields`, `write_damage_by_oid` | Lectura de las curvas, selección de la curva por taxonomía, amenaza y licuefacción, y cálculo del daño por evento |
+| Riesgo | `compute_DAE_fields`, `compute_PAE_fields`, `sum_component_DAE_by_tramo` | Integración sobre los periodos de retorno para obtener el DAE y la PAE, y agregación por tramo |
+| Criticidad | `dijkstra`, `read_taxonomy_csv`, `road_loss_analysis`, `tramo_dlt_from_roads`, `map_component_dlt_by_tramo` | Ruta alterna más corta al cortar cada tramo, costo diario de la interrupción (operación vehicular y tiempo de las personas) y asignación a los componentes |
+| Cambio climático | `parse_tp_fields`, `apply_TRmods`, `compute_mod_totals` | Recalcula el DAE y la PAE con los periodos de retorno modificados de cada escenario |
+
+El orden de `arcpy.GetParameterAsText(0…13)` en `main()` debe coincidir con el de los parámetros de `toolbox/BSA2.atbx`, que además declara 4 salidas derivadas (índices 14–17). La metodología de cada módulo se explica en la sección **Metodología** del sitio de documentación. El historial de versiones está en [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -184,8 +252,13 @@ El motor depende de `arcpy`, por lo que no tiene pruebas unitarias automatizadas
 ├── mkdocs.yml                configuración del sitio
 ├── requirements-docs.txt     dependencias para construir el sitio
 ├── sonar-project.properties  configuración del análisis de SonarQube
-├── .github/workflows/        CI: build.yml (SonarQube), docs.yml (sitio)
+├── .github/
+│   ├── workflows/            CI: build.yml (SonarQube), docs.yml (sitio), scorecard.yml (OpenSSF)
+│   ├── ISSUE_TEMPLATE/       plantilla de reporte de problemas (ES/EN)
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── .devcontainer/            entorno de desarrollo para la documentación
+├── README-EN.md              README en inglés
+├── CHANGELOG.md              historial de versiones
 ├── CONTRIBUTING.md
 ├── CODE-OF-CONDUCT.md
 └── LICENSE.md
