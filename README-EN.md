@@ -248,8 +248,6 @@ The order of `arcpy.GetParameterAsText(0…13)` in `main()` must match the param
 │       ├── Loc/              log of the reference run
 │       └── BSA2_CostaRica.zip  complete working folder (includes BSA2.gdb)
 ├── docs/                     MkDocs documentation site (ES: *.md, EN: *.en.md)
-├── scripts/
-│   └── extract_images.py     extracts the Concept Report figures to docs/assets/
 ├── licenses/legacy/          previous license (AM-331-A3)
 ├── mkdocs.yml                site configuration
 ├── requirements-docs.txt     dependencies to build the site

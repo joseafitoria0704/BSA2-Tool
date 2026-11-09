@@ -23,6 +23,8 @@ origen: [keom0891/BSA2](https://github.com/keom0891/BSA2) (motor de cálculo) y
 ### Eliminado
 - Carpeta `referencias/` (Concept Report, presentaciones, ficha de datos de entrada y
   guías de trabajo). Se conserva en el historial, por ejemplo en el tag `v0.3.0`.
+- Carpeta `scripts/` (`extract_images.py`, que extrajo una sola vez las figuras del
+  Concept Report a `docs/assets/metodologia/`). Se conserva en el historial.
 
 ### Cambiado
 - `requirements-docs.txt` declara versiones mínimas.

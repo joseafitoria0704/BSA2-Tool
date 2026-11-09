@@ -248,8 +248,6 @@ El orden de `arcpy.GetParameterAsText(0…13)` en `main()` debe coincidir con el
 │       ├── Loc/              registro de la corrida de referencia
 │       └── BSA2_CostaRica.zip  carpeta de trabajo completa (incluye BSA2.gdb)
 ├── docs/                     sitio de documentación MkDocs (ES: *.md, EN: *.en.md)
-├── scripts/
-│   └── extract_images.py     extrae las figuras del Concept Report a docs/assets/
 ├── licenses/legacy/          licencia anterior (AM-331-A3)
 ├── mkdocs.yml                configuración del sitio
 ├── requirements-docs.txt     dependencias para construir el sitio
