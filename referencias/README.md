@@ -36,3 +36,49 @@ Ahora están en otras carpetas:
 
 Las 18 figuras del Concept Report se extraen con `scripts/extract_images.py` a
 `docs/assets/metodologia/`.
+
+## Trazabilidad: de la fuente a la sección del sitio
+
+Este mapa, tomado de las instrucciones de redacción originales del sitio (`CLAUDE.md` de
+`bsa-docs`, que sigue en el historial), indica de dónde salió el contenido de cada página.
+Sirve para actualizar la documentación cuando cambien las fuentes.
+
+| Sección del sitio (`docs/`) | Fuente principal |
+|---|---|
+| Inicio (`index.md`) | Deck ejecutivo, láminas 1–5; Concept Report, cap. 1–2; créditos en `_guia/Mapa_Actores_BSA2.md` |
+| Metodología → Antecedentes | Concept Report, líneas 149–237 |
+| Metodología → Propósito y alcances | Concept Report, líneas 167–236 |
+| Metodología → Conceptos clave | Concept Report, glosario (líneas 116–145); deck ejecutivo, láminas 4–5 |
+| Metodología → Arquitectura | Concept Report, líneas 240–341 |
+| Metodología → Módulo de amenaza | Concept Report, líneas 465–519; hoja *Hazard* de la ficha de datos |
+| Metodología → Módulo de exposición | Concept Report, líneas 520–575 |
+| Metodología → Módulo de vulnerabilidad | Concept Report, líneas 600–657 |
+| Metodología → Módulo de criticidad | Concept Report, líneas 576–599 |
+| Metodología → Cálculo de riesgo | Concept Report, líneas 658–737 |
+| Metodología → Estructura de datos | Concept Report, líneas 343–464 |
+| Primeros pasos | Deck extenso, láminas 8, 12–13 y 15–17; `toolbox/BSA2.py`; `toolbox/BSA2.atbx` |
+| Guía de Usuario → Flujo de trabajo | Deck extenso, láminas 6–7; `toolbox/BSA2.py` |
+| Guía de Usuario → Datos de entrada | Ficha de datos (22 hojas); deck extenso, láminas 9–11 |
+| Guía de Usuario → Resultados | Concept Report, líneas 334–341; deck extenso, lámina 7 |
+| Guía de Usuario → Caso de ejemplo | `ejemplos/costa-rica/` |
+| Dashboard | Exploración en vivo del dashboard de República Dominicana; deck extenso, lámina 14; deck ejecutivo, lámina 8 |
+| Recursos → Referencias | Concept Report, línea 954 en adelante |
+| Glosario | Concept Report, líneas 116–145 (conceptos) y 349–371 (siglas) |
+
+## Notas de uso de las fuentes
+
+- **Fiabilidad del Concept Report.** Es un informe temprano que el equipo consideró
+  inconsistente y demasiado centrado en el riesgo de inundación. Es útil para el contexto
+  y el glosario, pero la metodología debe contrastarse con el código (`toolbox/BSA2.py`)
+  y con los documentos más recientes. En particular, el Concept Report usa la PAE como
+  métrica única, mientras que el sitio y el código separan el **DAE** (daño físico) de la
+  **PAE** (pérdida por interrupción).
+- **Lectura de las fuentes.** El Concept Report pesa 1,3 MB porque contiene imágenes en
+  base64 desde la línea 1028. La ficha `.xlsx` debe leerse con una herramienta de hojas de
+  cálculo o con `openpyxl`, no como texto.
+- **Política de descargas.** El proyecto todavía no se libera al público. Por eso el
+  sitio no incluye archivos descargables y reserva su lugar con el marcador
+  `<!-- COMPLETAR: enlace de descarga (a futuro) -->`.
+- **Identidad visual.** El sitio usa el logo y la paleta institucional del BID.
+- **Contacto del proyecto.** María Alejandra Escovar (DRM, BID), según
+  `_guia/Mapa_Actores_BSA2.md`.
