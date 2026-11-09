@@ -17,7 +17,12 @@ origen: [keom0891/BSA2](https://github.com/keom0891/BSA2) (motor de cálculo) y
 - `README-EN.md`, versión en inglés del README.
 - README ampliado con los archivos de entrada, las capas y campos de salida y la
   descripción de las funciones del motor.
-- Trazabilidad "fuente → sección del sitio" en `referencias/README.md`.
+- Sitio de documentación publicado automáticamente en GitHub Pages
+  (https://joseafitoria0704.github.io/BSA2-Tool/) en cada *push* a `main`.
+
+### Eliminado
+- Carpeta `referencias/` (Concept Report, presentaciones, ficha de datos de entrada y
+  guías de trabajo). Se conserva en el historial, por ejemplo en el tag `v0.3.0`.
 
 ### Cambiado
 - `requirements-docs.txt` declara versiones mínimas.

@@ -1,13 +1,20 @@
 """
 Extrae imágenes base64 del Concept Report y las guarda en docs/assets/metodologia/.
 Las referencias tienen el formato: [imageN]: data:image/png;base64,...
+
+El Concept Report ya no forma parte del árbol del repositorio (se retiró la carpeta
+referencias/), pero se conserva en el historial. Para recuperarlo:
+
+    git show "v0.3.0:referencias/01_metodologia/BSA 2.0 Concept Report.md" > concept_report.md
+    python scripts/extract_images.py concept_report.md
 """
+import sys
 import re
 import base64
 import os
 from pathlib import Path
 
-SOURCE = Path("referencias/01_metodologia/BSA 2.0 Concept Report.md")
+SOURCE = Path(sys.argv[1] if len(sys.argv) > 1 else "concept_report.md")
 OUTPUT = Path("docs/assets/metodologia")
 OUTPUT.mkdir(parents=True, exist_ok=True)
 

@@ -19,6 +19,10 @@
 
 **Español** | [English](README-EN.md)
 
+<p align="center"><a href="https://joseafitoria0704.github.io/BSA2-Tool/"><img src="https://img.shields.io/badge/Documentaci%C3%B3n%20en%20l%C3%ADnea-Abrir%20el%20sitio-0B5394?style=for-the-badge" alt="Abrir la documentación en línea"/></a></p>
+
+> 📘 **Documentación completa en línea:** [https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/) — metodología, instalación, guía de usuario, dashboard y glosario.
+
 ---
 
 ## Tabla de contenidos
@@ -67,8 +71,7 @@ Este repositorio reúne en un solo lugar:
 
 1. el **motor de cálculo** (`toolbox/BSA2.py`) y el toolbox de ArcGIS Pro (`toolbox/BSA2.atbx`);
 2. el **caso de referencia de Costa Rica** (`ejemplos/costa-rica/`);
-3. el **sitio de documentación** bilingüe, en español e inglés (`docs/`, MkDocs + Material);
-4. el **material de referencia** del proyecto (`referencias/`).
+3. el **sitio de documentación** bilingüe, en español e inglés (`docs/`, MkDocs + Material), publicado en **[https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/)**.
 
 ---
 
@@ -76,7 +79,7 @@ Este repositorio reúne en un solo lugar:
 
 El BSA 2.0 se usa por completo desde la interfaz gráfica de ArcGIS Pro, sin programar. El flujo de trabajo tiene seis etapas:
 
-1. **Recopilar y estandarizar los datos**: capas de exposición, rásters de amenaza por periodo de retorno y bases de vulnerabilidad y de costos (ver la ficha `referencias/03_datos_entrada/`).
+1. **Recopilar y estandarizar los datos**: capas de exposición, rásters de amenaza por periodo de retorno y bases de vulnerabilidad y de costos (ver [Datos de entrada](https://joseafitoria0704.github.io/BSA2-Tool/guia-usuario/datos-entrada/) en el sitio de documentación).
 2. **Preparar las capas de exposición** con sus atributos requeridos (`ID_TRAMO`, `vul_f`, `vul_eq`, `rep_cost_k`, TPDA `T9`–`T15`, etc.).
 3. **Calcular el PIB per cápita por día** del país.
 4. **Definir la longitud de segmento** de la red vial (por ejemplo, 30 m en el caso de Costa Rica).
@@ -188,7 +191,7 @@ El motor depende de `arcpy`, por lo que no tiene pruebas unitarias automatizadas
 | PIB per cápita por día (12) | Número | Valor del tiempo de las personas usuarias durante la interrupción |
 | Longitud de segmento (13) | Número (m) | Distancia entre los puntos de muestreo sobre la red, por ejemplo 30 m |
 
-La ficha completa de datos obligatorios y opcionales (22 hojas) está en `referencias/03_datos_entrada/`.
+El detalle de los datos obligatorios y opcionales está en la página [Datos de entrada](https://joseafitoria0704.github.io/BSA2-Tool/guia-usuario/datos-entrada/) del sitio de documentación.
 
 ## Archivos de salida (en `BSA2.gdb`, junto a `BSA2.py`)
 
@@ -245,7 +248,6 @@ El orden de `arcpy.GetParameterAsText(0…13)` en `main()` debe coincidir con el
 │       ├── Loc/              registro de la corrida de referencia
 │       └── BSA2_CostaRica.zip  carpeta de trabajo completa (incluye BSA2.gdb)
 ├── docs/                     sitio de documentación MkDocs (ES: *.md, EN: *.en.md)
-├── referencias/              material base: Concept Report, presentaciones, ficha de datos
 ├── scripts/
 │   └── extract_images.py     extrae las figuras del Concept Report a docs/assets/
 ├── licenses/legacy/          licencia anterior (AM-331-A3)
@@ -279,7 +281,9 @@ El sitio de documentación (en `docs/`) es bilingüe y tiene estas secciones:
 | Recursos | Descargas, referencias bibliográficas, preguntas frecuentes |
 | Glosario | Conceptos y diccionario de siglas |
 
-Para consultarlo localmente, ver [Construir el sitio de documentación](#construir-el-sitio-de-documentación). El workflow `docs.yml` también puede publicarlo en GitHub Pages (`https://joseafitoria0704.github.io/BSA2-Tool/`) mediante una ejecución manual.
+**Consulte el sitio en línea: [https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/)** (versión en inglés: [https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/)).
+
+El workflow `docs.yml` lo compila y publica en GitHub Pages automáticamente en cada *push* a `main`. Para consultarlo localmente, ver [Construir el sitio de documentación](#construir-el-sitio-de-documentación).
 
 ---
 
@@ -302,7 +306,7 @@ La metodología y el motor de cálculo del BSA 2.0 los desarrollan las divisione
 - **Liderazgo del programa:** Manuel Rodríguez (TSP) y Ginés Suárez (DRM).
 - **Dirección del producto:** María Alejandra Escovar (DRM), Juan Camilo Olaya (TSP) y Kenneth Otárola.
 
-El equipo completo está en la sección **Inicio → Créditos** del sitio y en `referencias/_guia/Mapa_Actores_BSA2.md`.
+El equipo completo está en la sección [Equipo del proyecto](https://joseafitoria0704.github.io/BSA2-Tool/#equipo-del-proyecto) del sitio de documentación.
 
 **Contacto del proyecto:** María Alejandra Escovar (DRM, BID).
 

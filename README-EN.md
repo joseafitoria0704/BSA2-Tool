@@ -19,6 +19,10 @@
 
 [Español](README.md) | **English**
 
+<p align="center"><a href="https://joseafitoria0704.github.io/BSA2-Tool/en/"><img src="https://img.shields.io/badge/Online%20documentation-Open%20the%20site-0B5394?style=for-the-badge" alt="Open the online documentation"/></a></p>
+
+> 📘 **Full online documentation:** [https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/): methodology, installation, user guide, dashboard and glossary.
+
 ---
 
 ## Table of contents
@@ -67,8 +71,7 @@ This repository brings together:
 
 1. the **calculation engine** (`toolbox/BSA2.py`) and the ArcGIS Pro toolbox (`toolbox/BSA2.atbx`);
 2. the **Costa Rica reference case** (`ejemplos/costa-rica/`);
-3. the bilingual Spanish/English **documentation site** (`docs/`, MkDocs + Material);
-4. the project's **reference material** (`referencias/`).
+3. the bilingual Spanish/English **documentation site** (`docs/`, MkDocs + Material), published at **[https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/)**.
 
 ---
 
@@ -76,7 +79,7 @@ This repository brings together:
 
 BSA 2.0 runs entirely from the ArcGIS Pro graphical interface, with no programming. The workflow has six stages:
 
-1. **Collect and standardize the data**: exposure layers, hazard rasters by return period, and vulnerability and cost databases (see the data sheet in `referencias/03_datos_entrada/`).
+1. **Collect and standardize the data**: exposure layers, hazard rasters by return period, and vulnerability and cost databases (see [Input Data](https://joseafitoria0704.github.io/BSA2-Tool/en/guia-usuario/datos-entrada/) on the documentation site).
 2. **Prepare the exposure layers** with their required attributes (`ID_TRAMO`, `vul_f`, `vul_eq`, `rep_cost_k`, traffic `T9`–`T15`, etc.).
 3. **Compute the country's GDP per capita per day.**
 4. **Define the road segment length** (for example, 30 m in the Costa Rica case).
@@ -188,7 +191,7 @@ The engine depends on `arcpy`, so it has no automated unit tests. It is validate
 | GDP per capita per day (12) | Number | Value of users' time during the disruption |
 | Segment length (13) | Number (m) | Spacing of the sampling points along the network, e.g. 30 m |
 
-The full sheet of mandatory and optional data (22 tabs) is in `referencias/03_datos_entrada/`.
+The mandatory and optional data are detailed on the [Input Data](https://joseafitoria0704.github.io/BSA2-Tool/en/guia-usuario/datos-entrada/) page of the documentation site.
 
 ## Output files (in `BSA2.gdb`, next to `BSA2.py`)
 
@@ -245,7 +248,6 @@ The order of `arcpy.GetParameterAsText(0…13)` in `main()` must match the param
 │       ├── Loc/              log of the reference run
 │       └── BSA2_CostaRica.zip  complete working folder (includes BSA2.gdb)
 ├── docs/                     MkDocs documentation site (ES: *.md, EN: *.en.md)
-├── referencias/              base material: Concept Report, presentations, data sheet
 ├── scripts/
 │   └── extract_images.py     extracts the Concept Report figures to docs/assets/
 ├── licenses/legacy/          previous license (AM-331-A3)
@@ -279,7 +281,9 @@ The documentation site (in `docs/`) is bilingual and has these sections:
 | Resources | Downloads, bibliographic references, FAQ |
 | Glossary | Concepts and acronym dictionary |
 
-To view it locally, see [Building the documentation site](#building-the-documentation-site). The `docs.yml` workflow can also publish it to GitHub Pages (`https://joseafitoria0704.github.io/BSA2-Tool/`) through a manual run.
+**Browse the site online: [https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/)** (Spanish version: [https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/)).
+
+The `docs.yml` workflow builds and publishes it to GitHub Pages automatically on every *push* to `main`. To view it locally, see [Building the documentation site](#building-the-documentation-site).
 
 ---
 
@@ -302,7 +306,7 @@ The BSA 2.0 methodology and calculation engine are developed by the **Transport 
 - **Program leadership:** Manuel Rodríguez (TSP) and Ginés Suárez (DRM).
 - **Product direction:** María Alejandra Escovar (DRM), Juan Camilo Olaya (TSP) and Kenneth Otárola.
 
-The full team is listed in **Home → Credits** on the site and in `referencias/_guia/Mapa_Actores_BSA2.md`.
+The full team is listed in the [Project team](https://joseafitoria0704.github.io/BSA2-Tool/en/#project-team) section of the documentation site.
 
 **Project contact:** María Alejandra Escovar (DRM, IDB).
 

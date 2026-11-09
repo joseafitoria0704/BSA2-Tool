@@ -67,8 +67,8 @@ conocer su experiencia: cuéntenosla en un *issue* o escríbanos a
   fórmulas con `$...$` y `$$...$$` (extensión arithmatex) y diagramas Mermaid cuando
   aporten claridad.
 - Guarde las imágenes en `docs/assets/` y cite la fuente de figuras y datos.
-- Respete los derechos de autor: no copie bloques largos de los documentos de
-  `referencias/`; redacte con palabras propias.
+- Respete los derechos de autor: no copie bloques largos de los documentos fuente del
+  proyecto (Concept Report, presentaciones); redacte con palabras propias.
 
 ### Terminología obligatoria
 
