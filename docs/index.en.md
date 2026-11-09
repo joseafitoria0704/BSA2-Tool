@@ -152,5 +152,5 @@ TSP (Transport) · DRM (Disaster Risk Management) · CCS (Climate Change)
 
 ## License
 
-This project is distributed under the **IDB License AM-331-A3 of the Inter-American Development Bank**.
+The software in this project is distributed under the **IDB Open-Source Software License** of the Inter-American Development Bank (effective December 2025), and its support and usage documentation under the **Creative Commons CC-BY 4.0** license.
 See the full text on the [License](licencia.md) page.

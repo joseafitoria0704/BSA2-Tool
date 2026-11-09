@@ -1,13 +1,13 @@
 # Case Study — Costa Rica
 
-This page describes the application of BSA 2.0 to the Costa Rica reference case, included in the `fuentes/04_codigo/BSA2_CostaRica/` folder. This case serves as a reference for validating the installation, understanding the workflow, and calibrating expectations about the results.
+This page describes the application of BSA 2.0 to the Costa Rica reference case, included in the repository folder `ejemplos/costa-rica/`. The package `ejemplos/costa-rica/BSA2_CostaRica.zip` contains the complete, self-contained working folder (project, geodatabase, toolbox and script); unzip it to open the case in ArcGIS Pro. The current toolbox and script are also available in `toolbox/`. This case serves as a reference for validating the installation, understanding the workflow, and calibrating expectations about the results.
 
 !!! note "Purpose of the case study"
     The Costa Rica case is a reference dataset that illustrates the complete operation of the toolbox. It does not represent an official analysis of the country; its function is pedagogical and technical validation.
 
 ## Components of the case study
 
-The `BSA2_CostaRica/` directory contains the following files:
+Once unzipped, the `BSA2_CostaRica/` directory contains the following files:
 
 | File | Description |
 |------|-------------|

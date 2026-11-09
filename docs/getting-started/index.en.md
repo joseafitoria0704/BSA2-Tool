@@ -12,7 +12,7 @@ The BSA 2.0 distribution follows a progressive release scheme:
 |-------|--------|-------------|
 | **Internal Alpha** | Active | Available exclusively to the IDB technical team and direct project consultants. Access by direct coordination with the team. |
 | **Beta — controlled distribution** | Coming soon | Access for selected government units and technical partners under a use agreement with the IDB. |
-| **Stable version** | Future | Available to the technical public under the IDB license framework (AM-331-A3). |
+| **Stable version** | Future | Available to the technical public under the IDB Open-Source Software License. |
 
 <!-- COMPLETAR: enlace de descarga (a futuro) -->
 

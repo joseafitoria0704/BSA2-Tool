@@ -1,13 +1,13 @@
 # Caso de ejemplo — Costa Rica
 
-Esta página describe la aplicación del BSA 2.0 al caso de referencia de Costa Rica, incluido en la carpeta `fuentes/04_codigo/BSA2_CostaRica/`. Este caso sirve como referencia para validar la instalación, entender el flujo de trabajo y calibrar las expectativas sobre los resultados.
+Esta página describe la aplicación del BSA 2.0 al caso de referencia de Costa Rica, incluido en la carpeta `ejemplos/costa-rica/` del repositorio. El paquete `ejemplos/costa-rica/BSA2_CostaRica.zip` contiene la carpeta de trabajo completa y autocontenida (proyecto, geodatabase, toolbox y script); descomprímalo para abrir el caso en ArcGIS Pro. El toolbox y el script vigentes también se encuentran en `toolbox/`. Este caso sirve como referencia para validar la instalación, entender el flujo de trabajo y calibrar las expectativas sobre los resultados.
 
 !!! note "Propósito del caso de ejemplo"
     El caso de Costa Rica es un conjunto de datos de referencia que ilustra el funcionamiento completo del toolbox. No representa un análisis oficial del país; su función es pedagógica y de validación técnica.
 
 ## Componentes del caso de ejemplo
 
-El directorio `BSA2_CostaRica/` contiene los siguientes archivos:
+Una vez descomprimido, el directorio `BSA2_CostaRica/` contiene los siguientes archivos:
 
 | Archivo | Descripción |
 |---------|-------------|

@@ -152,5 +152,5 @@ TSP (Transporte) · DRM (Gestión de Riesgo de Desastres) · CCS (Cambio Climát
 
 ## Licencia
 
-Este proyecto se distribuye bajo la **licencia AM-331-A3 del Banco Interamericano de Desarrollo**.
+El software de este proyecto se distribuye bajo la **Licencia de Software de Código Abierto del Banco Interamericano de Desarrollo** (vigente desde diciembre de 2025), y su documentación de soporte y uso bajo la licencia **Creative Commons CC-BY 4.0**.
 Consulte el texto completo en la página [Licencia](licencia.md).

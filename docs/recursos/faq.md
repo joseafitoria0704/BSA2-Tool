@@ -78,7 +78,7 @@
 
 ??? question "¿El BSA 2.0 es de uso libre?"
 
-    No en esta etapa. El proyecto se distribuye bajo la **licencia AM-331-A3 del BID** y no está disponible públicamente. El acceso a la herramienta y los datos es restringido a equipos autorizados por el Banco Interamericano de Desarrollo. Consulte la página [Licencia](../licencia.md) para los términos completos.
+    No en esta etapa. El proyecto se distribuye bajo la **Licencia de Software de Código Abierto del BID**, pero aún no está disponible públicamente. El acceso a la herramienta y los datos es restringido a equipos autorizados por el Banco Interamericano de Desarrollo. Consulte la página [Licencia](../licencia.md) para los términos completos.
 
 ---
 

@@ -78,7 +78,7 @@
 
 ??? question "Is BSA 2.0 free to use?"
 
-    Not at this stage. The project is distributed under the **IDB AM-331-A3 license** and is not publicly available. Access to the tool and data is restricted to teams authorized by the Inter-American Development Bank. See the [License](../licencia.md) page for full terms.
+    Not at this stage. The project is distributed under the **IDB Open-Source Software License**, but it is not yet publicly available. Access to the tool and data is restricted to teams authorized by the Inter-American Development Bank. See the [License](../licencia.md) page for full terms.
 
 ---
 

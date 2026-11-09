@@ -12,7 +12,7 @@ La distribución del BSA 2.0 sigue un esquema de liberación progresiva:
 |------|--------|-------------|
 | **Alfa interno** | Activo | Disponible exclusivamente para el equipo técnico del BID y consultores directos del proyecto. Acceso por coordinación directa con el equipo. |
 | **Beta — distribución controlada** | Próximamente | Acceso para unidades gubernamentales seleccionadas y socios técnicos bajo acuerdo de uso con el BID. |
-| **Versión estable** | A futuro | Disponible para el público técnico conforme al marco de licencia del BID (AM-331-A3). |
+| **Versión estable** | A futuro | Disponible para el público técnico conforme a la Licencia de Software de Código Abierto del BID. |
 
 <!-- COMPLETAR: enlace de descarga (a futuro) -->
 
