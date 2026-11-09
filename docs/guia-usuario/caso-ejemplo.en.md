@@ -5,6 +5,9 @@ This page describes the application of BSA 2.0 to the Costa Rica reference case,
 !!! note "Purpose of the case study"
     The Costa Rica case is a reference dataset that illustrates the complete operation of the toolbox. It does not represent an official analysis of the country; its function is pedagogical and technical validation.
 
+!!! warning "Hazard rasters not included"
+    The repository does not include the hazard rasters of the case (`ri_h_CR_*.tif`, `c_h_CR_*.tif` and `EQ_CR_PGA_*.tif`), and `CostaRica.aprx` still references the authors' local folders. To reproduce the run, request the rasters from the project team and relink the layers in ArcGIS Pro.
+
 ## Components of the case study
 
 Once unzipped, the `BSA2_CostaRica/` directory contains the following files:

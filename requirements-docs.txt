@@ -1,2 +1,5 @@
-mkdocs-material
-mkdocs-static-i18n
+# Dependencias para construir el sitio de documentación (MkDocs).
+# La herramienta BSA 2.0 no las necesita: usa el entorno arcgispro-py3 de ArcGIS Pro.
+mkdocs>=1.6,<2
+mkdocs-material>=9.5,<10
+mkdocs-static-i18n>=1.2,<2

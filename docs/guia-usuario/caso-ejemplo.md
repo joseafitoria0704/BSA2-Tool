@@ -5,6 +5,9 @@ Esta página describe la aplicación del BSA 2.0 al caso de referencia de Costa 
 !!! note "Propósito del caso de ejemplo"
     El caso de Costa Rica es un conjunto de datos de referencia que ilustra el funcionamiento completo del toolbox. No representa un análisis oficial del país; su función es pedagógica y de validación técnica.
 
+!!! warning "Rásters de amenaza no incluidos"
+    El repositorio no incluye los rásters de amenaza del caso (`ri_h_CR_*.tif`, `c_h_CR_*.tif` y `EQ_CR_PGA_*.tif`), y `CostaRica.aprx` conserva referencias a carpetas locales de los autores. Para reproducir la corrida, solicite los rásters al equipo del proyecto y vuelva a vincular las capas en ArcGIS Pro.
+
 ## Componentes del caso de ejemplo
 
 Una vez descomprimido, el directorio `BSA2_CostaRica/` contiene los siguientes archivos:

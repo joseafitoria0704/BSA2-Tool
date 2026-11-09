@@ -28,6 +28,9 @@ BSA2 ─── Exposure ──── Road network                (0) [required]
 \* At least **one** hazard raster (parameters 4–7) must be provided.  
 † Parameters 11 and 12 must be provided together or neither; otherwise the tool returns an error.
 
+!!! warning "Validation of required parameters"
+    In the ArcGIS Pro dialog **all parameters are shown as optional**, because that is how they are declared in `BSA2.atbx`. The `BSA2.py` script checks the required ones at run time: if the road network (0), the VF database (10), the segment length (13) or every hazard raster (4–7) is missing, or if parameters 11 and 12 are not provided together, the run stops with an error message in the geoprocessing window.
+
 ## Exposure parameters
 
 ### (0) Road network — `roads_path` *(required)*

@@ -28,6 +28,9 @@ BSA2 ─── Exposición ──── Red vial                    (0) [obligat
 \* Al menos **uno** de los rásters de amenaza (parámetros 4–7) debe estar provisto.  
 † Los parámetros 11 y 12 deben proveerse juntos o ninguno; de lo contrario la herramienta devuelve error.
 
+!!! warning "Validación de los parámetros obligatorios"
+    En el diálogo de ArcGIS Pro **todos los parámetros aparecen como opcionales**, porque así están declarados en `BSA2.atbx`. La obligatoriedad la comprueba el script `BSA2.py` cuando se ejecuta: si falta la red vial (0), la base FVU (10), la longitud de segmento (13) o algún ráster de amenaza (4–7), o si los parámetros 11 y 12 no se ingresan juntos, la corrida se detiene con un mensaje de error en la ventana de geoprocesamiento.
+
 ## Parámetros de exposición
 
 ### (0) Red vial — `roads_path` *(obligatorio)*
