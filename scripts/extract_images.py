@@ -7,7 +7,7 @@ import base64
 import os
 from pathlib import Path
 
-SOURCE = Path("fuentes/01_metodologia/BSA 2.0 Concept Report.md")
+SOURCE = Path("referencias/01_metodologia/BSA 2.0 Concept Report.md")
 OUTPUT = Path("docs/assets/metodologia")
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
