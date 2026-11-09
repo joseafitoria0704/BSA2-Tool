@@ -157,18 +157,6 @@ La herramienta **no requiere variables de entorno** ni archivos de configuració
 
 > ⚠️ **Los rásters de amenaza del caso no están incluidos.** Faltan las inundaciones fluvial y costera y el sismo (`ri_h_CR_*.tif`, `c_h_CR_*.tif` y `EQ_CR_PGA_*.tif`). Además, `CostaRica.aprx` conserva referencias a carpetas locales de los autores. Para reproducir la corrida hay que obtener esos rásters del equipo del proyecto y volver a vincular las capas en ArcGIS Pro.
 
-## Construir el sitio de documentación
-
-La documentación necesita Python 3.9 o superior, independiente de ArcGIS Pro:
-
-```bash
-pip install -r requirements-docs.txt
-mkdocs serve          # sitio local en http://127.0.0.1:8000/
-mkdocs build --strict # genera el sitio estático en site/
-```
-
-También puede usar el entorno de desarrollo de `.devcontainer/` (VS Code o GitHub Codespaces).
-
 ## Pruebas
 
 El motor depende de `arcpy`, por lo que no tiene pruebas unitarias automatizadas. Se valida con el caso de referencia de Costa Rica. El workflow `docs.yml` comprueba en cada *push* que el sitio de documentación se construya sin errores.
@@ -251,7 +239,7 @@ El orden de `arcpy.GetParameterAsText(0…13)` en `main()` debe coincidir con el
 ├── licenses/legacy/          licencia anterior (AM-331-A3)
 ├── mkdocs.yml                configuración del sitio
 ├── requirements-docs.txt     dependencias para construir el sitio
-├── sonar-project.properties  configuración del análisis de SonarQube
+├── sonar-project.properties  configuración del análisis de calidad de código (SonarQube, requisito del BID)
 ├── .github/
 │   ├── workflows/            CI: build.yml (SonarQube), docs.yml (sitio), scorecard.yml (OpenSSF)
 │   ├── ISSUE_TEMPLATE/       plantilla de reporte de problemas (ES/EN)
@@ -281,7 +269,7 @@ El sitio de documentación (en `docs/`) es bilingüe y tiene estas secciones:
 
 **Consulte el sitio en línea: [https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/)** (versión en inglés: [https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/)).
 
-El workflow `docs.yml` lo compila y publica en GitHub Pages automáticamente en cada *push* a `main`. Para consultarlo localmente, ver [Construir el sitio de documentación](#construir-el-sitio-de-documentación).
+El workflow `docs.yml` lo compila y publica en GitHub Pages automáticamente en cada *push* a `main`.
 
 ---
 

@@ -28,6 +28,9 @@ origen: [keom0891/BSA2](https://github.com/keom0891/BSA2) (motor de cálculo) y
 
 ### Cambiado
 - `requirements-docs.txt` declara versiones mínimas.
+- El README ya no explica cómo construir el sitio localmente: el sitio se consulta en
+  GitHub Pages (las instrucciones para contribuyentes siguen en `CONTRIBUTING.md`).
+- `sonar-project.properties` incluye un encabezado que explica su propósito.
 - La página *Interfaz de la herramienta* aclara que el diálogo muestra todos los
   parámetros como opcionales y que la obligatoriedad la valida `BSA2.py` al ejecutarse.
 - El README y la página *Caso de ejemplo* advierten que los rásters de amenaza del caso de

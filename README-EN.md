@@ -157,18 +157,6 @@ The tool **does not require any environment variables** or additional configurat
 
 > ⚠️ **The hazard rasters of the case are not included.** The riverine flood, coastal flood and earthquake rasters (`ri_h_CR_*.tif`, `c_h_CR_*.tif` and `EQ_CR_PGA_*.tif`) are missing. In addition, `CostaRica.aprx` still references the authors' local folders. To reproduce the run, obtain the rasters from the project team and relink the layers in ArcGIS Pro.
 
-## Building the documentation site
-
-The documentation requires Python 3.9 or later, independent of ArcGIS Pro:
-
-```bash
-pip install -r requirements-docs.txt
-mkdocs serve          # local site at http://127.0.0.1:8000/
-mkdocs build --strict # builds the static site in site/
-```
-
-You can also use the development environment in `.devcontainer/` (VS Code or GitHub Codespaces).
-
 ## Tests
 
 The engine depends on `arcpy`, so it has no automated unit tests. It is validated with the Costa Rica reference case. The `docs.yml` workflow checks on every *push* that the documentation site builds without errors.
@@ -251,7 +239,7 @@ The order of `arcpy.GetParameterAsText(0…13)` in `main()` must match the param
 ├── licenses/legacy/          previous license (AM-331-A3)
 ├── mkdocs.yml                site configuration
 ├── requirements-docs.txt     dependencies to build the site
-├── sonar-project.properties  SonarQube analysis configuration
+├── sonar-project.properties  code-quality analysis configuration (SonarQube, required by the IDB)
 ├── .github/
 │   ├── workflows/            CI: build.yml (SonarQube), docs.yml (site), scorecard.yml (OpenSSF)
 │   ├── ISSUE_TEMPLATE/       issue report template (ES/EN)
@@ -281,7 +269,7 @@ The documentation site (in `docs/`) is bilingual and has these sections:
 
 **Browse the site online: [https://joseafitoria0704.github.io/BSA2-Tool/en/](https://joseafitoria0704.github.io/BSA2-Tool/en/)** (Spanish version: [https://joseafitoria0704.github.io/BSA2-Tool/](https://joseafitoria0704.github.io/BSA2-Tool/)).
 
-The `docs.yml` workflow builds and publishes it to GitHub Pages automatically on every *push* to `main`. To view it locally, see [Building the documentation site](#building-the-documentation-site).
+The `docs.yml` workflow builds and publishes it to GitHub Pages automatically on every *push* to `main`.
 
 ---
 
