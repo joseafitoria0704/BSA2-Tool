@@ -1,25 +1,32 @@
-name: ci
+name: docs
+
 on:
   push:
     branches:
       - main
+  pull_request:
+  # El despliegue a GitHub Pages es manual: en un repositorio privado, Pages
+  # requiere un plan de pago de GitHub.
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Desplegar el sitio en GitHub Pages (rama gh-pages)"
+        type: boolean
+        default: false
+
 permissions:
   contents: write
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-      - name: Configurar credenciales de Git
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: '3.11'
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
@@ -27,7 +34,14 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+      - run: pip install -r requirements-docs.txt
+      - name: Construir el sitio
+        run: mkdocs build --strict
+      - name: Desplegar en GitHub Pages
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          mkdocs gh-deploy --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

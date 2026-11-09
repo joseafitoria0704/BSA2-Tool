@@ -1,0 +1,46 @@
+name: SonarQube
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarqube:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run tests with coverage (best effort)
+        continue-on-error: true
+        run: |
+          pip install coverage pytest || true
+          if [ -d tests ] || [ -d test ]; then
+            coverage run -m pytest || true
+            coverage xml -o coverage.xml || true
+          fi
+
+      # El análisis se omite hasta que se configuren los secretos SONAR_TOKEN y
+      # SONAR_HOST_URL (normalmente los provee el BID al transferir el repo a EL-BID).
+      - name: SonarQube Scan
+        if: env.SONAR_TOKEN != ''
+        uses: SonarSource/sonarqube-scan-action@v6
+
+      - name: SonarQube not configured
+        if: env.SONAR_TOKEN == ''
+        run: echo "::notice::SONAR_TOKEN no configurado; se omite el análisis de SonarQube."

@@ -1,6 +1,9 @@
 site_name: Blue Spot Analysis 2.0
 site_description: Documentación de la metodología, la herramienta y el dashboard del BSA 2.0
-site_url: https://andresabarca-atlas.github.io/bsa-docs/  # Ajustar si cambia el repositorio
+site_url: https://joseafitoria0704.github.io/BSA2-Tool/  # Ajustar si el repositorio se transfiere a EL-BID
+repo_url: https://github.com/joseafitoria0704/BSA2-Tool
+repo_name: BSA2-Tool
+copyright: Copyright &copy; 2026 Banco Interamericano de Desarrollo (BID). Documentación bajo licencia CC-BY 4.0.
 docs_dir: docs
 
 theme:

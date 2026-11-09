@@ -1,0 +1,15 @@
+{
+  "name": "BSA2-Tool (documentación)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install -r requirements-docs.txt",
+  "forwardPorts": [8000],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "yzhang.markdown-all-in-one",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}
