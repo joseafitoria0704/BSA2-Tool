@@ -16,7 +16,7 @@ This page describes the steps to install ArcGIS Pro, add the `BSA2.atbx` toolbox
 
 ## 2. Create or open an ArcGIS Pro project
 
-1. Open ArcGIS Pro and create a new project (**New → Map**) or open an existing one (e.g., `CostaRica.aprx` if working with reference data).
+1. Open ArcGIS Pro and create a new project (**New → Map**) or open an existing one. To work with the reference case, see [Case Study](../guia-usuario/caso-ejemplo.md#how-to-reproduce-the-analysis).
 2. Define a working folder where you will store input data and results. See [Data organization](organizacion-datos.md) for the recommended structure.
 
 ## 3. Add the BSA2.atbx toolbox

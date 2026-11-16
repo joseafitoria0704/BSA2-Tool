@@ -19,7 +19,7 @@ Estas capas representan la infraestructura vial susceptible de ser afectada por 
 | `ID_País` | Código del país (p. ej. CR, DO, SV) | String | No |
 | `vul_f` | Código de taxonomía de vulnerabilidad para inundación | String | Sí |
 | `vul_eq` | Código de taxonomía de vulnerabilidad para sismo | String | Sí (si hay amenaza sísmica) |
-| `rep_cost_k` | Costo de reposición en miles de USD/metro de carretera | Double | Sí |
+| `rep_cost_k` | Costo de reposición por kilómetro de carretera, en la unidad monetaria de la corrida (el script lo divide entre 1000 para obtener el costo por metro) | Double | Sí |
 | `T9`–`T15` | TPDA por tipo de vehículo (pick-up, automóvil, bus, camiones) | Double | Sí (para PAE) |
 
 - **Formato:** Shapefile de polilíneas (`.shp`)

@@ -6,8 +6,6 @@
 
 <p align="center"><b>Prioritizing transport infrastructure investments based on natural hazard risk</b></p>
 
-<p align="center"><img src="docs/assets/metodologia/image16.png" alt="BSA prioritization map of road segments in the Dominican Republic" width="640"/><br/><sub>Sample output: prioritization level of road segments at provincial scale (Dominican Republic). Source: BSA 2.0 Concept Report.</sub></p>
-
 ![version](https://img.shields.io/badge/version-0.3.0-blue)
 ![ArcGIS Pro](https://img.shields.io/badge/ArcGIS%20Pro-3.2%2B-2C7AC3)
 ![python](https://img.shields.io/badge/python-arcgispro--py3-3776AB)
@@ -153,9 +151,9 @@ The tool **does not require any environment variables** or additional configurat
 
 ## Reference case (Costa Rica)
 
-`ejemplos/costa-rica/BSA2_CostaRica.zip` contains the working folder of the case: the `CostaRica.aprx` project, the `BSA2.gdb` geodatabase with the exposure layers (road network, bridges, tunnels and drainage), the toolbox and the script. It also includes the `FVU_BSA_V3.csv` and `OCO_BSA_CR_V1.csv` databases, which are also available unzipped in the same folder. The parameters of the reference run are recorded in `ejemplos/costa-rica/Loc/run_config_20260413_172736.loc`.
+[`ejemplos/costa-rica/`](ejemplos/costa-rica/) is the **reference example of the workflow**: it gathers the inputs (exposure layers, vulnerability functions and operating costs) and the results of a real run over Costa Rica's road network, organized as the documentation recommends. Its [README](ejemplos/costa-rica/README-EN.md) explains the workflow stage by stage, the 14 parameters of the run and the values to validate the results.
 
-> ⚠️ **The hazard rasters of the case are not included.** The riverine flood, coastal flood and earthquake rasters (`ri_h_CR_*.tif`, `c_h_CR_*.tif` and `EQ_CR_PGA_*.tif`) are missing. In addition, `CostaRica.aprx` still references the authors' local folders. To reproduce the run, obtain the rasters from the project team and relink the layers in ArcGIS Pro.
+> ⚠️ **The example is incomplete.** The 22 hazard rasters (riverine and coastal flood, and earthquake) are missing, so the run cannot be reproduced yet. It also lacks an ArcGIS Pro project, and the reference results have known limitations (for example, the components are not linked to the roads). Everything is detailed in the [example's README](ejemplos/costa-rica/README-EN.md).
 
 ## Tests
 
@@ -169,13 +167,13 @@ The engine depends on `arcpy`, so it has no automated unit tests. It is validate
 
 | Input (parameter) | Format | Content |
 | --- | --- | --- |
-| Road network (`roads_path`, 0) | Polyline layer | `ID_TRAMO`, `vul_f` (flood taxonomy), `vul_eq` (seismic taxonomy), `rep_cost_k` (thousand USD per meter), `Longitud` (m), traffic by vehicle type `T9`–`T15` |
+| Road network (`roads_path`, 0) | Polyline layer | `ID_TRAMO`, `vul_f` (flood taxonomy), `vul_eq` (seismic taxonomy), `rep_cost_k` (replacement cost per kilometer), `Longitud` (m), traffic by vehicle type `T9`–`T15` |
 | Bridges, tunnels and drainage (1–3) | Point layers | `ID_TRAMO` (segment they belong to), `vul_f`, `vul_eq`, `rep_cost` (USD) |
 | Hazards (4–7) | Several GeoTIFFs per hazard, one per return period | Water depth (m) for floods, wave height (m) for tsunami and PGA for earthquake. The return period is read from the **last number in the file name** (`ri_h_CR_100.tif` → RP = 100) |
 | Liquefaction (8) | One GeoTIFF | Susceptibility on a 1–4 scale. Modifies the seismic vulnerability function |
 | Climate change (9) | Polygon layer | `TP###S#M` fields with the modified return periods per scenario |
-| Vulnerability (10) | CSV, one row per curve: `taxonomy,[intensities],[values]` | Example: `FL_RMD_H_TRNP,[0,0.2,0.5,1.5,50],[0,1,2,20,20]`. See `ejemplos/costa-rica/FVU_BSA_V3.csv` (60 curves) |
-| Operating costs (11) | CSV `taxonomy,COV,OCU` | Vehicle operating cost (USD/km) and average occupancy for `T9`–`T15`. See `ejemplos/costa-rica/OCO_BSA_CR_V1.csv` |
+| Vulnerability (10) | CSV, one row per curve: `taxonomy,[intensities],[values]` | Example: `FL_RMD_H_TRNP,[0,0.2,0.5,1.5,50],[0,1,2,20,20]`. See `ejemplos/costa-rica/Vulnerability/FVU_BSA_V3.csv` (60 curves) |
+| Operating costs (11) | CSV `taxonomy,COV,OCU` | Vehicle operating cost (USD/km) and average occupancy for `T9`–`T15`. See `ejemplos/costa-rica/Operations/OCO_BSA_CR_V1.csv` |
 | GDP per capita per day (12) | Number | Value of users' time during the disruption |
 | Segment length (13) | Number (m) | Spacing of the sampling points along the network, e.g. 30 m |
 
@@ -229,12 +227,12 @@ The order of `arcpy.GetParameterAsText(0…13)` in `main()` must match the param
 │   ├── BSA2.py               calculation engine (ArcGIS Pro toolbox)
 │   └── BSA2.atbx             toolbox definition and its 14 parameters
 ├── ejemplos/
-│   └── costa-rica/           reference case
-│       ├── CostaRica.aprx    ArcGIS Pro project
-│       ├── FVU_BSA_V3.csv    vulnerability functions
-│       ├── OCO_BSA_CR_V1.csv vehicle operating costs
-│       ├── Loc/              log of the reference run
-│       └── BSA2_CostaRica.zip  complete working folder (includes BSA2.gdb)
+│   └── costa-rica/           reference case of the workflow (see its README)
+│       ├── Exposure/         exposure layers (shapefiles)
+│       ├── Hazard/           hazard rasters (pending)
+│       ├── Vulnerability/    vulnerability functions (FVU_BSA_V3.csv)
+│       ├── Operations/       vehicle operating costs (OCO_BSA_CR_V1.csv)
+│       └── Reference_results/  results and parameters of the reference run
 ├── docs/                     MkDocs documentation site (ES: *.md, EN: *.en.md)
 ├── licenses/legacy/          previous license (AM-331-A3)
 ├── mkdocs.yml                site configuration

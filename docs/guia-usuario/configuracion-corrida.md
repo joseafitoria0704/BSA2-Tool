@@ -93,16 +93,16 @@ La siguiente tabla muestra la configuración usada para el caso de referencia de
 
 | Parámetro | Valor |
 |-----------|-------|
-| Red vial | `crc_RVN_WGS84` |
-| Puentes | `crc_rvn_puentes2` |
-| Túneles | `cr_tuneles_rvn_WGS84` |
-| Drenajes | `crc_rvn_drenaje2` |
+| Red vial | `Exposure/crc_RVN_WGS84.shp` |
+| Puentes | `Exposure/crc_rvn_puentes2.shp` |
+| Túneles | `Exposure/cr_tuneles_rvn_WGS84.shp` |
+| Drenajes | `Exposure/crc_rvn_drenaje2.shp` |
 | Inundación fluvial | 7 rásters: `ri_h_CR_{10,20,50,75,100,200,500}.tif` |
 | Inundación costera | 10 rásters: `c_h_CR_{1,2,5,10,25,50,100,250,500,1000}.tif` |
 | Tsunami | *(no disponible para CR)* |
 | Sismo | 5 rásters: `EQ_CR_PGA_{100,225,475,2475,4975}.tif` |
 | Licuefacción | *(no disponible para CR)* |
-| FVU | `FVU_BSA_V3.csv` |
-| Costos operativos | `OCO_BSA_CR_V1.csv` |
-| PIB per cápita/día | `45249.62` |
+| FVU | `Vulnerability/FVU_BSA_V3.csv` |
+| Costos operativos | `Operations/OCO_BSA_CR_V1.csv` |
+| PIB per cápita/día | `45249.62` (unidad por confirmar; ver [Caso de ejemplo](caso-ejemplo.md#limitaciones-conocidas)) |
 | Longitud de segmento | `30` metros |

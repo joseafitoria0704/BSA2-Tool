@@ -93,16 +93,16 @@ The following table shows the configuration used for the Costa Rica reference ca
 
 | Parameter | Value |
 |-----------|-------|
-| Road network | `crc_RVN_WGS84` |
-| Bridges | `crc_rvn_puentes2` |
-| Tunnels | `cr_tuneles_rvn_WGS84` |
-| Drainage | `crc_rvn_drenaje2` |
+| Road network | `Exposure/crc_RVN_WGS84.shp` |
+| Bridges | `Exposure/crc_rvn_puentes2.shp` |
+| Tunnels | `Exposure/cr_tuneles_rvn_WGS84.shp` |
+| Drainage | `Exposure/crc_rvn_drenaje2.shp` |
 | Fluvial flooding | 7 rasters: `ri_h_CR_{10,20,50,75,100,200,500}.tif` |
 | Coastal flooding | 10 rasters: `c_h_CR_{1,2,5,10,25,50,100,250,500,1000}.tif` |
 | Tsunami | *(not available for CR)* |
 | Earthquake | 5 rasters: `EQ_CR_PGA_{100,225,475,2475,4975}.tif` |
 | Liquefaction | *(not available for CR)* |
-| VF | `FVU_BSA_V3.csv` |
-| Operating costs | `OCO_BSA_CR_V1.csv` |
-| GDP per capita/day | `45249.62` |
+| VF | `Vulnerability/FVU_BSA_V3.csv` |
+| Operating costs | `Operations/OCO_BSA_CR_V1.csv` |
+| GDP per capita/day | `45249.62` (unit to be confirmed; see [Case Study](caso-ejemplo.md#known-limitations)) |
 | Segment length | `30` meters |

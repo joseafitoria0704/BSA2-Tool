@@ -42,7 +42,7 @@ Polyline vector layer representing the road network to analyze. It is the only s
 | `ID_TRAMO` | Long/String | Unique identifier of the road segment. |
 | `vul_f` | String | Vulnerability taxonomy code for flood hazards (e.g., `H_TRNP`). |
 | `vul_eq` | String | Vulnerability taxonomy code for earthquake. |
-| `rep_cost_k` | Double | Segment replacement cost in **thousands of USD per meter**. |
+| `rep_cost_k` | Double | Segment replacement cost **per kilometer**, in the monetary unit of the run (the script divides it by 1000 to obtain the cost per meter). |
 | `Longitud` | Double | Segment length in meters. |
 | `T9`–`T15` | Double | Annual Average Daily Traffic (AADT) by vehicle type. |
 

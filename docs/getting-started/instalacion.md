@@ -16,7 +16,7 @@ Esta página describe los pasos para instalar ArcGIS Pro, agregar el toolbox `BS
 
 ## 2. Crear o abrir un proyecto ArcGIS Pro
 
-1. Abra ArcGIS Pro y cree un nuevo proyecto (**New → Map**) o abra uno existente (por ejemplo, `CostaRica.aprx` si está trabajando con los datos de referencia).
+1. Abra ArcGIS Pro y cree un nuevo proyecto (**New → Map**) o abra uno existente. Para trabajar con el caso de referencia, ver [Caso de ejemplo](../guia-usuario/caso-ejemplo.md#como-reproducir-el-analisis).
 2. Defina una carpeta de trabajo donde almacenará los datos de entrada y los resultados. Consulte [Organización de datos](organizacion-datos.md) para la estructura recomendada.
 
 ## 3. Agregar el toolbox BSA2.atbx

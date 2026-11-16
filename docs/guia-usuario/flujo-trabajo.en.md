@@ -37,7 +37,7 @@ For the road network, complete and validate the key attributes for each segment:
 
 - `ID_TRAMO`: unique identifier per segment. All components (bridges, tunnels, drainage) associated with the segment must have the same value.
 - `vul_f` and `vul_eq`: vulnerability taxonomy codes. Must exactly match the keys in the VF file (no extra spaces).
-- `rep_cost_k`: replacement cost in thousands of USD per meter (for roads) or total USD (for bridges and drainage, field `rep_cost`).
+- `rep_cost_k`: replacement cost per kilometer (for roads; the script divides it by 1000 to obtain the cost per meter) or total cost (for bridges, tunnels and drainage, field `rep_cost`), in the monetary unit of the run.
 - `T9`–`T15`: Annual Average Daily Traffic by vehicle type. If detailed traffic counts are not available, estimates can be used from total AADT data and the country's vehicle type distribution.
 
 ## Stage 3 — Calculate GDP per capita per day

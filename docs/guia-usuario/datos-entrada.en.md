@@ -19,7 +19,7 @@ These layers represent the road infrastructure susceptible to being affected by 
 | `ID_País` | Country code (e.g. CR, DO, SV) | String | No |
 | `vul_f` | Vulnerability taxonomy code for flooding | String | Yes |
 | `vul_eq` | Vulnerability taxonomy code for earthquake | String | Yes (if seismic hazard present) |
-| `rep_cost_k` | Replacement cost in thousands of USD/meter of road | Double | Yes |
+| `rep_cost_k` | Replacement cost per kilometer of road, in the monetary unit of the run (the script divides it by 1000 to obtain the cost per meter) | Double | Yes |
 | `T9`–`T15` | AADT by vehicle type (pick-up, car, bus, trucks) | Double | Yes (for EAL) |
 
 - **Format:** Polyline shapefile (`.shp`)

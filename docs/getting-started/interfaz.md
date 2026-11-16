@@ -42,7 +42,7 @@ Capa vectorial de polilíneas que representa la red de carreteras a analizar. Es
 | `ID_TRAMO` | Long/String | Identificador único del tramo vial. |
 | `vul_f` | String | Código de taxonomía de vulnerabilidad para amenazas de inundación (ej. `H_TRNP`). |
 | `vul_eq` | String | Código de taxonomía de vulnerabilidad para sismo. |
-| `rep_cost_k` | Double | Costo de reposición del tramo en **miles de USD por metro**. |
+| `rep_cost_k` | Double | Costo de reposición del tramo **por kilómetro**, en la unidad monetaria de la corrida (el script lo divide entre 1000 para obtener el costo por metro). |
 | `Longitud` | Double | Longitud del segmento en metros. |
 | `T9`–`T15` | Double | Tránsito Promedio Diario Anual (TPDA) por tipo de vehículo. |
 

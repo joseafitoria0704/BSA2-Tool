@@ -6,8 +6,6 @@
 
 <p align="center"><b>Priorización de inversiones en infraestructura de transporte a partir del riesgo ante amenazas naturales</b></p>
 
-<p align="center"><img src="docs/assets/metodologia/image16.png" alt="Mapa de priorización de tramos viales del BSA en República Dominicana" width="640"/><br/><sub>Ejemplo de resultado: nivel de priorización de tramos viales a escala provincial (República Dominicana). Fuente: BSA 2.0 Concept Report.</sub></p>
-
 ![version](https://img.shields.io/badge/version-0.3.0-blue)
 ![ArcGIS Pro](https://img.shields.io/badge/ArcGIS%20Pro-3.2%2B-2C7AC3)
 ![python](https://img.shields.io/badge/python-arcgispro--py3-3776AB)
@@ -153,9 +151,9 @@ La herramienta **no requiere variables de entorno** ni archivos de configuració
 
 ## Caso de referencia (Costa Rica)
 
-`ejemplos/costa-rica/BSA2_CostaRica.zip` contiene la carpeta de trabajo del caso: el proyecto `CostaRica.aprx`, la geodatabase `BSA2.gdb` con las capas de exposición (red vial, puentes, túneles y drenajes), el toolbox y el script. También incluye las bases `FVU_BSA_V3.csv` y `OCO_BSA_CR_V1.csv`, que además están sueltas en la misma carpeta. Los parámetros de la corrida de referencia están en `ejemplos/costa-rica/Loc/run_config_20260413_172736.loc`.
+[`ejemplos/costa-rica/`](ejemplos/costa-rica/) es el **ejemplo de referencia del flujo de trabajo**: reúne los insumos (capas de exposición, funciones de vulnerabilidad y costos de operación) y los resultados de una corrida real sobre la red vial de Costa Rica, organizados como recomienda la documentación. Su [README](ejemplos/costa-rica/README.md) explica el flujo etapa por etapa, los 14 parámetros de la corrida y los valores para validar los resultados.
 
-> ⚠️ **Los rásters de amenaza del caso no están incluidos.** Faltan las inundaciones fluvial y costera y el sismo (`ri_h_CR_*.tif`, `c_h_CR_*.tif` y `EQ_CR_PGA_*.tif`). Además, `CostaRica.aprx` conserva referencias a carpetas locales de los autores. Para reproducir la corrida hay que obtener esos rásters del equipo del proyecto y volver a vincular las capas en ArcGIS Pro.
+> ⚠️ **El ejemplo está incompleto.** Faltan los 22 rásters de amenaza (inundación fluvial y costera, y sismo), por lo que todavía no puede reproducirse la corrida. Tampoco incluye un proyecto de ArcGIS Pro, y los resultados de referencia tienen limitaciones conocidas (por ejemplo, los componentes no se vinculan con las vías). Todo está detallado en el [README del ejemplo](ejemplos/costa-rica/README.md).
 
 ## Pruebas
 
@@ -169,13 +167,13 @@ El motor depende de `arcpy`, por lo que no tiene pruebas unitarias automatizadas
 
 | Insumo (parámetro) | Formato | Contenido |
 | --- | --- | --- |
-| Red vial (`roads_path`, 0) | Capa de polilíneas | `ID_TRAMO`, `vul_f` (taxonomía de inundación), `vul_eq` (taxonomía sísmica), `rep_cost_k` (miles de USD por metro), `Longitud` (m), TPDA por tipo de vehículo `T9`–`T15` |
+| Red vial (`roads_path`, 0) | Capa de polilíneas | `ID_TRAMO`, `vul_f` (taxonomía de inundación), `vul_eq` (taxonomía sísmica), `rep_cost_k` (costo de reposición por kilómetro), `Longitud` (m), TPDA por tipo de vehículo `T9`–`T15` |
 | Puentes, túneles y drenajes (1–3) | Capas de puntos | `ID_TRAMO` (tramo al que pertenecen), `vul_f`, `vul_eq`, `rep_cost` (USD) |
 | Amenazas (4–7) | Varios GeoTIFF por amenaza, uno por periodo de retorno | Tirante (m) para inundación, altura de ola (m) para tsunami y PGA para sismo. El periodo de retorno se toma del **último número del nombre del archivo** (`ri_h_CR_100.tif` → Tr = 100) |
 | Licuefacción (8) | Un GeoTIFF | Susceptibilidad en escala 1–4. Modifica la función de vulnerabilidad sísmica |
 | Cambio climático (9) | Capa de polígonos | Campos `TP###S#M` con los periodos de retorno modificados por escenario |
-| Vulnerabilidad (10) | CSV, una fila por curva: `taxonomy,[intensidades],[valores]` | Ejemplo: `FL_RMD_H_TRNP,[0,0.2,0.5,1.5,50],[0,1,2,20,20]`. Ver `ejemplos/costa-rica/FVU_BSA_V3.csv` (60 curvas) |
-| Costos de operación (11) | CSV `taxonomy,COV,OCU` | Costo de operación vehicular (USD/km) y ocupación promedio para `T9`–`T15`. Ver `ejemplos/costa-rica/OCO_BSA_CR_V1.csv` |
+| Vulnerabilidad (10) | CSV, una fila por curva: `taxonomy,[intensidades],[valores]` | Ejemplo: `FL_RMD_H_TRNP,[0,0.2,0.5,1.5,50],[0,1,2,20,20]`. Ver `ejemplos/costa-rica/Vulnerability/FVU_BSA_V3.csv` (60 curvas) |
+| Costos de operación (11) | CSV `taxonomy,COV,OCU` | Costo de operación vehicular (USD/km) y ocupación promedio para `T9`–`T15`. Ver `ejemplos/costa-rica/Operations/OCO_BSA_CR_V1.csv` |
 | PIB per cápita por día (12) | Número | Valor del tiempo de las personas usuarias durante la interrupción |
 | Longitud de segmento (13) | Número (m) | Distancia entre los puntos de muestreo sobre la red, por ejemplo 30 m |
 
@@ -229,12 +227,12 @@ El orden de `arcpy.GetParameterAsText(0…13)` en `main()` debe coincidir con el
 │   ├── BSA2.py               motor de cálculo (toolbox de ArcGIS Pro)
 │   └── BSA2.atbx             definición del toolbox y de sus 14 parámetros
 ├── ejemplos/
-│   └── costa-rica/           caso de referencia
-│       ├── CostaRica.aprx    proyecto de ArcGIS Pro
-│       ├── FVU_BSA_V3.csv    funciones de vulnerabilidad
-│       ├── OCO_BSA_CR_V1.csv costos de operación vehicular
-│       ├── Loc/              registro de la corrida de referencia
-│       └── BSA2_CostaRica.zip  carpeta de trabajo completa (incluye BSA2.gdb)
+│   └── costa-rica/           caso de referencia del flujo de trabajo (ver su README)
+│       ├── Exposure/         capas de exposición (shapefiles)
+│       ├── Hazard/           rásters de amenaza (pendientes)
+│       ├── Vulnerability/    funciones de vulnerabilidad (FVU_BSA_V3.csv)
+│       ├── Operations/       costos de operación vehicular (OCO_BSA_CR_V1.csv)
+│       └── Reference_results/  resultados y parámetros de la corrida de referencia
 ├── docs/                     sitio de documentación MkDocs (ES: *.md, EN: *.en.md)
 ├── licenses/legacy/          licencia anterior (AM-331-A3)
 ├── mkdocs.yml                configuración del sitio

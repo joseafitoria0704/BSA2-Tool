@@ -37,7 +37,7 @@ Para la red vial, complete y valide los atributos clave en cada tramo:
 
 - `ID_TRAMO`: identificador único por tramo. Todos los componentes (puentes, túneles, drenajes) asociados al tramo deben tener el mismo valor.
 - `vul_f` y `vul_eq`: códigos de taxonomía de vulnerabilidad. Deben corresponder exactamente a las claves del archivo FVU (sin espacios adicionales).
-- `rep_cost_k`: costo de reposición en miles de USD por metro (para vías) o USD totales (para puentes y drenajes, campo `rep_cost`).
+- `rep_cost_k`: costo de reposición por kilómetro (para vías; el script lo divide entre 1000 para obtener el costo por metro) o costo total (para puentes, túneles y drenajes, campo `rep_cost`), en la unidad monetaria de la corrida.
 - `T9`–`T15`: Tránsito Promedio Diario Anual por tipo de vehículo. Si no se dispone de aforo detallado, puede usar estimaciones a partir de datos de TPDA total y la distribución por tipo de vehículo del país.
 
 ## Etapa 3 — Calcular el PIB per cápita por día

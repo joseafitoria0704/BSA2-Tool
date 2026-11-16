@@ -20,14 +20,32 @@ origen: [keom0891/BSA2](https://github.com/keom0891/BSA2) (motor de cálculo) y
 - Sitio de documentación publicado automáticamente en GitHub Pages
   (https://joseafitoria0704.github.io/BSA2-Tool/) en cada *push* a `main`.
 
+### Reorganizado
+- Caso de referencia de Costa Rica reorganizado como ejemplo del flujo de trabajo
+  (`ejemplos/costa-rica/`): carpetas `Exposure/`, `Hazard/`, `Vulnerability/`,
+  `Operations/` y `Reference_results/` según la estructura recomendada en la documentación,
+  con su propio README (ES/EN), tabla de parámetros, valores de validación y limitaciones
+  conocidas.
+- Capas de exposición del caso (shapefiles) reconstruidas a partir de las capas de
+  resultados, que era lo único que traía el paquete original.
+- Resultados de referencia en un GeoPackage abierto (antes, dentro de una geodatabase).
+
 ### Eliminado
 - Carpeta `referencias/` (Concept Report, presentaciones, ficha de datos de entrada y
   guías de trabajo). Se conserva en el historial, por ejemplo en el tag `v0.3.0`.
+- `ejemplos/costa-rica/BSA2_CostaRica.zip` y `CostaRica.aprx`. El zip duplicaba archivos
+  y su geodatabase traía historial con rutas personales; el `.aprx` no era portable
+  (apuntaba a carpetas locales y mezclaba un mapa de República Dominicana). Ambos siguen en
+  el historial (por ejemplo, en el tag `v0.3.0`).
+- La imagen del mapa de priorización de República Dominicana al inicio de los README, por no
+  ser un resultado de la herramienta.
 - Carpeta `scripts/` (`extract_images.py`, que extrajo una sola vez las figuras del
   Concept Report a `docs/assets/metodologia/`). Se conserva en el historial.
 
 ### Cambiado
 - `requirements-docs.txt` declara versiones mínimas.
+- La documentación describe `rep_cost_k` como costo de reposición **por kilómetro** (el
+  script lo divide entre 1000 para obtener el costo por metro), no "miles de USD por metro".
 - El README ya no explica cómo construir el sitio localmente: el sitio se consulta en
   GitHub Pages (las instrucciones para contribuyentes siguen en `CONTRIBUTING.md`).
 - `sonar-project.properties` incluye un encabezado que explica su propósito.
